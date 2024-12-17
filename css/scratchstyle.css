@@ -1,0 +1,45 @@
+body{
+    background-color: rgb(232, 220, 202);
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+.secthead{
+    color: gray;
+    font-weight: bold;
+}
+
+.mainbody{
+    color: rgb(20, 20, 20);
+    bottom: 50px;
+    top: 5px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.topbody{
+    font-size: small;
+    color: rgb(0, 0, 0);
+    height: 25px;
+    top: 5px;
+    border-bottom: solid 3px rgb(255, 255, 255);
+}
+
+.bottom{
+    font-size: small;
+    color: gray;
+    text-align: center;
+    border-top: solid 3px rgb(255, 255, 255);
+    padding-top: 10px;
+    position: relative
+}
+
+a{
+    text-decoration: none;
+}
+a:visited{
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+}

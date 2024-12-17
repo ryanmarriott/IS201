@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Test</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: rgb(131, 165, 154);
+        }
+        #question-container, #result-button, #result {
+            text-align: center; 
+            margin-top: 10px;
+        }
+        #question-container {
+          display:none;
+        }
+        #result-button, #restart-button { display: none; }
+
+        #restart-button {
+            margin-top: 10px; /* Add some spacing */
+        }
+    </style>
+</head>
+<body>
+    <h1>Quick IQ Test</h1>
+    <div id="question-container">
+        <p id="question"></p>
+        <input type="number" id="answer" placeholder="Your answer">
+        <button onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <button onclick="showResult()" id="result-button">Click Here to Reveal Your IQ</button>
+    <p id="result"></p>
+
+    <button onclick="startQuiz()" id="start-button">Start</button>
+    <button onclick="restartQuiz()" id="restart-button">Restart Quiz</button>
+
+    <script>
+        const questions = [
+            { q: "5 + 7 = ?", a: 12 },
+            { q: "12 - 4 = ?", a: 8 },
+            { q: "3 * 6 = ?", a: 18 },
+            { q: "20 / 5 = ?", a: 4 },
+            { q: "15 + 5 - 10 = ?", a: 10 }
+        ];
+        let currentQuestion = 0;
+
+        function startQuiz() {
+            document.getElementById('start-button').style.display = 'none';
+            document.getElementById('question-container').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            document.getElementById('question').textContent = questions[currentQuestion].q;
+        }
+
+        function checkAnswer() {
+            const userAnswer = parseInt(document.getElementById('answer').value, 10);
+            if (userAnswer === questions[currentQuestion].a) {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                    document.getElementById('answer').value = ''; 
+                } else {
+                    document.getElementById('question-container').style.display = 'none';
+                    document.getElementById('result-button').style.display = 'block';
+                }
+            } else {
+              document.getElementById('result').textContent = "Incorrect, try again.";
+            }
+        }
+
+        function showResult() {
+            document.getElementById('result').textContent = "Silly Goose, I can't tell you your IQ. I just wanted to waste your time!";
+            document.getElementById('result-button').style.display = 'none';
+            document.getElementById('restart-button').style.display = 'block';
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            document.getElementById('result').textContent = '';
+            document.getElementById('restart-button').style.display = 'none';
+            document.getElementById('start-button').style.display = 'block';
+            document.getElementById('question-container').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
